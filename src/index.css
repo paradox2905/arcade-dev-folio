@@ -51,14 +51,26 @@ All colors MUST be HSL.
     --retro-teal: 174 100% 38%;
     --retro-text-dark: 30 40% 10%;
     
+    /* Skills Section Dark Mode */
+    --skills-bg: 165 80% 8%;
+    --skills-card: 165 60% 12%;
+    --skills-card-hover: 165 60% 15%;
+    --skills-gold: 45 100% 55%;
+    --skills-cyan: 180 100% 50%;
+    --skills-magenta: 300 100% 60%;
+    --skills-blue: 220 100% 60%;
+    
     /* Shadows for 3D depth */
     --shadow-retro: 0 4px 0 0 hsl(30 40% 10%);
     --shadow-glow: 0 0 20px hsl(43 100% 50% / 0.6);
     --shadow-card: 0 8px 0 0 hsl(30 40% 10%);
+    --shadow-skill-card: 0 4px 20px hsl(165 100% 5% / 0.5);
+    --shadow-inner-glow: inset 0 0 20px hsl(43 100% 50% / 0.1);
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(45 100% 88%), hsl(43 100% 85%));
     --gradient-dark: linear-gradient(135deg, hsl(165 100% 15%), hsl(165 100% 9%));
+    --gradient-skills: linear-gradient(135deg, hsl(165 80% 8%), hsl(165 80% 5%));
   }
 }
 

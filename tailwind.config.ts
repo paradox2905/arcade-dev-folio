@@ -120,6 +120,23 @@ export default {
           "0%": { width: "0%" },
           "100%": { width: "var(--progress-width)" },
         },
+        "floatSlow": {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(2deg)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { 
+            boxShadow: "0 0 15px hsl(45 100% 55% / 0.3)",
+          },
+          "50%": { 
+            boxShadow: "0 0 30px hsl(45 100% 55% / 0.6)",
+          },
+        },
+        "wiggle": {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(1deg)" },
+          "75%": { transform: "rotate(-1deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -130,6 +147,9 @@ export default {
         "slideInRight": "slideInRight 0.6s ease-out",
         "fadeIn": "fadeIn 0.6s ease-out",
         "progress": "progress 1.5s ease-out forwards",
+        "floatSlow": "floatSlow 4s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "wiggle": "wiggle 3s ease-in-out infinite",
       },
     },
   },

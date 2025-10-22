@@ -5,99 +5,128 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const Skills = () => {
   const skillCategories = {
     foundations: {
-      name: "FOUNDATIONS",
+      name: "Foundations",
       icon: Wrench,
       level: "1 / 4",
       skills: ["HTML", "CSS", "JavaScript", "TypeScript", "A11Y", "Testing"],
       count: 6,
-      color: "primary"
+      color: "hsl(var(--skills-gold))"
     },
     frontend: {
-      name: "FRONTEND",
+      name: "Frontend",
       icon: Code2,
       level: "2 / 4",
       skills: ["React", "Next.js", "Tailwind", "shadcn/ui", "Redux", "React Query"],
       count: 6,
-      color: "secondary"
+      color: "hsl(var(--skills-cyan))"
     },
     motion: {
-      name: "MOTION & SCROLL",
+      name: "Motion & Scroll",
       icon: Zap,
       level: "3 / 4",
       skills: ["GSAP", "Framer Motion", "ScrollTrigger", "Lottie", "CSS Animations"],
       count: 5,
-      color: "accent"
+      color: "hsl(var(--skills-magenta))"
     },
     backend: {
-      name: "BUILD & BACKEND",
+      name: "Build & Backend",
       icon: Rocket,
       level: "4 / 4",
       skills: ["Node.js", "Express", "Firebase", "MongoDB", "REST APIs", "Git"],
       count: 6,
-      color: "muted"
+      color: "hsl(var(--skills-blue))"
     }
   };
 
   const [activeTab, setActiveTab] = useState("foundations");
 
   return (
-    <section className="py-20 px-4 gradient-dark" id="skills">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-20 px-4 relative overflow-hidden" id="skills" style={{ background: "var(--gradient-skills)" }}>
+      <div className="container mx-auto max-w-7xl">
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl text-white text-shadow-retro mb-4">
+        <div className="text-center mb-12 animate-fadeIn">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: "hsl(var(--skills-gold))" }}>
             SKILLS · LOADOUT
           </h2>
-          <p className="text-lg text-secondary/80 font-['Outfit']">
+          <p className="text-lg font-['Outfit'] text-white/70">
             Choose your class · Prove your mastery · Level up your game.
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 bg-transparent mb-8">
-            {Object.entries(skillCategories).map(([key, category]) => (
-              <TabsTrigger
-                key={key}
-                value={key}
-                className="retro-button bg-card data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-sm md:text-xs py-3"
-              >
-                {category.name}
-              </TabsTrigger>
-            ))}
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-3 bg-transparent mb-8">
+            {Object.entries(skillCategories).map(([key, category]) => {
+              const Icon = category.icon;
+              return (
+                <TabsTrigger
+                  key={key}
+                  value={key}
+                  className="rounded-xl p-4 border-2 transition-all duration-300 data-[state=active]:animate-pulse-glow font-['Outfit'] font-semibold text-sm"
+                  style={{
+                    backgroundColor: activeTab === key ? category.color : "hsl(var(--skills-card))",
+                    borderColor: activeTab === key ? category.color : "transparent",
+                    color: activeTab === key ? "hsl(var(--skills-bg))" : "white",
+                    boxShadow: activeTab === key ? `var(--shadow-skill-card), ${category.color === "hsl(var(--skills-gold))" ? "var(--shadow-glow)" : ""}` : "none"
+                  }}
+                >
+                  <Icon className="w-4 h-4 mr-2 inline" />
+                  {category.name}
+                </TabsTrigger>
+              );
+            })}
           </TabsList>
 
           {Object.entries(skillCategories).map(([key, category]) => {
             const Icon = category.icon;
             return (
               <TabsContent key={key} value={key} className="mt-0">
-                <div className="grid md:grid-cols-3 gap-8">
-                  {/* Skill Detail Card */}
-                  <div className="md:col-span-2 retro-card p-6 md:p-8 bg-card/95 backdrop-blur animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-primary rounded-lg border-2 border-foreground">
-                        <Icon className="w-8 h-8 text-primary-foreground" />
+                <div className="grid md:grid-cols-3 gap-6">
+                  {/* Main Skill Detail Card */}
+                  <div 
+                    className="md:col-span-2 rounded-2xl p-8 backdrop-blur-sm animate-floatSlow border-2"
+                    style={{
+                      backgroundColor: "hsl(var(--skills-card))",
+                      borderColor: category.color,
+                      boxShadow: `var(--shadow-skill-card), var(--shadow-inner-glow)`
+                    }}
+                  >
+                    <div className="flex items-center gap-4 mb-8">
+                      <div 
+                        className="p-4 rounded-xl animate-wiggle" 
+                        style={{ 
+                          backgroundColor: category.color,
+                          boxShadow: `0 0 20px ${category.color}40`
+                        }}
+                      >
+                        <Icon className="w-10 h-10" style={{ color: "hsl(var(--skills-bg))" }} />
                       </div>
                       <div>
-                        <h3 className="text-xl md:text-2xl font-['Press_Start_2P'] mb-2">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: category.color }}>
                           {category.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground font-['Outfit']">
+                        <p className="text-base font-['Outfit'] text-white/60">
                           Level {category.level}
                         </p>
                       </div>
                     </div>
 
                     {/* Equipment Section */}
-                    <div className="mb-6">
-                      <h4 className="text-base font-['Press_Start_2P'] mb-4 text-primary">
+                    <div className="mb-8">
+                      <h4 className="text-lg font-bold mb-4" style={{ color: "hsl(var(--skills-gold))" }}>
                         Equipment:
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-3">
                         {category.skills.map((skill, index) => (
                           <span
                             key={skill}
-                            className="px-3 py-2 bg-accent text-accent-foreground rounded-md border-2 border-foreground text-sm font-['Outfit'] font-medium animate-fadeIn"
-                            style={{ animationDelay: `${index * 0.05}s` }}
+                            className="px-4 py-2 rounded-lg border-2 font-['Outfit'] font-medium text-sm transition-all duration-300 hover:scale-105 animate-fadeIn"
+                            style={{ 
+                              backgroundColor: "hsl(var(--skills-card-hover))",
+                              borderColor: category.color,
+                              color: "white",
+                              animationDelay: `${index * 0.1}s`,
+                              boxShadow: `0 0 10px ${category.color}20`
+                            }}
                           >
                             {skill}
                           </span>
@@ -107,45 +136,74 @@ const Skills = () => {
 
                     {/* Achievements Section */}
                     <div>
-                      <h4 className="text-base font-['Press_Start_2P'] mb-4 text-primary">
+                      <h4 className="text-lg font-bold mb-4" style={{ color: "hsl(var(--skills-gold))" }}>
                         Achievements Unlocked:
                       </h4>
-                      <div className="space-y-2">
-                        {category.skills.slice(0, 3).map((skill) => (
-                          <div key={skill} className="flex items-center gap-2">
-                            <div className="w-6 h-6 bg-primary border-2 border-foreground rounded flex items-center justify-center">
-                              <span className="text-primary-foreground text-xs">✓</span>
+                      <div className="space-y-3">
+                        {category.skills.slice(0, 3).map((skill, index) => (
+                          <div 
+                            key={skill} 
+                            className="flex items-center gap-3 animate-fadeIn"
+                            style={{ animationDelay: `${index * 0.15}s` }}
+                          >
+                            <div 
+                              className="w-8 h-8 rounded-lg flex items-center justify-center border-2"
+                              style={{ 
+                                backgroundColor: category.color,
+                                borderColor: category.color,
+                                boxShadow: `0 0 15px ${category.color}40`
+                              }}
+                            >
+                              <span style={{ color: "hsl(var(--skills-bg))" }} className="text-sm font-bold">✓</span>
                             </div>
-                            <span className="text-sm font-['Outfit']">Mastered {skill}</span>
+                            <span className="font-['Outfit'] text-white/90">Mastered {skill}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
 
-                  {/* Progress Tracker */}
-                  <div className="retro-card p-6 bg-card/95 backdrop-blur animate-fadeIn">
-                    <h4 className="text-base font-['Press_Start_2P'] mb-6 text-center">
+                  {/* Progress Tracker Sidebar */}
+                  <div 
+                    className="rounded-2xl p-6 backdrop-blur-sm animate-float border-2"
+                    style={{
+                      backgroundColor: "hsl(var(--skills-card))",
+                      borderColor: "hsl(var(--skills-gold))",
+                      boxShadow: "var(--shadow-skill-card), var(--shadow-inner-glow)"
+                    }}
+                  >
+                    <h4 className="text-lg font-bold mb-6 text-center" style={{ color: "hsl(var(--skills-gold))" }}>
                       XP TRACKER
                     </h4>
                     <div className="space-y-6">
-                      {Object.entries(skillCategories).map(([key, cat]) => (
-                        <div key={key}>
+                      {Object.entries(skillCategories).map(([catKey, cat], index) => (
+                        <div 
+                          key={catKey}
+                          className="animate-fadeIn"
+                          style={{ animationDelay: `${index * 0.1}s` }}
+                        >
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-xs font-['Outfit'] font-medium">
+                            <span className="text-xs font-['Outfit'] font-semibold text-white/90">
                               {cat.name}
                             </span>
-                            <span className="text-xs text-muted-foreground font-['Outfit']">
+                            <span className="text-xs font-['Outfit'] text-white/50">
                               {cat.count} skills
                             </span>
                           </div>
-                          <div className="w-full h-4 bg-accent/20 border-2 border-foreground rounded overflow-hidden">
+                          <div 
+                            className="w-full h-3 rounded-full overflow-hidden border"
+                            style={{ 
+                              backgroundColor: "hsl(var(--skills-bg))",
+                              borderColor: cat.color
+                            }}
+                          >
                             <div 
-                              className={`h-full bg-${cat.color} animate-progress`}
+                              className="h-full transition-all duration-1000 ease-out rounded-full"
                               style={{ 
-                                '--progress-width': `${(cat.count / 6) * 100}%`,
-                                width: activeTab === key ? `${(cat.count / 6) * 100}%` : '0%'
-                              } as React.CSSProperties}
+                                backgroundColor: cat.color,
+                                width: activeTab === catKey ? `${(cat.count / 6) * 100}%` : '0%',
+                                boxShadow: `0 0 10px ${cat.color}`
+                              }}
                             />
                           </div>
                         </div>
