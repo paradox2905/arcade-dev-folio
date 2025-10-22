@@ -37,17 +37,17 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={testimonial.name}
-              className="retro-card p-6 bg-card/95 backdrop-blur animate-fadeIn hover:scale-105 transition-all duration-300"
+              className="retro-card p-6 bg-card/95 backdrop-blur animate-fadeIn animate-floatSlow hover:scale-105 transition-all duration-300"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <Quote className="w-8 h-8 text-primary mb-4" />
+              <Quote className="w-8 h-8 text-primary mb-4 animate-pulse-glow" />
               
               <p className="text-sm md:text-base text-foreground/90 font-['Outfit'] mb-6 leading-relaxed">
                 "{testimonial.text}"
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-accent border-2 border-foreground rounded-lg flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 bg-accent border-2 border-foreground rounded-lg flex items-center justify-center text-2xl animate-wiggle">
                   {testimonial.avatar}
                 </div>
                 <div>

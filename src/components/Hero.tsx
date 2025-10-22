@@ -49,7 +49,7 @@ const Hero = () => {
               {skills.map((skill, index) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 bg-accent text-accent-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium"
+                  className="px-3 py-1 bg-accent text-accent-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium animate-float"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {skill}
@@ -60,13 +60,13 @@ const Hero = () => {
 
           {/* Right - Player Card */}
           <div className="animate-slideInRight">
-            <div className="retro-card p-6 bg-card animate-float">
+            <div className="retro-card p-6 bg-card animate-floatSlow">
               <div className="text-center space-y-4">
-                <div className="inline-block bg-primary text-primary-foreground px-4 py-1 rounded-full border-2 border-foreground mb-2">
+                <div className="inline-block bg-primary text-primary-foreground px-4 py-1 rounded-full border-2 border-foreground mb-2 animate-pulse-glow">
                   <span className="text-xs font-['Press_Start_2P']">RANK S</span>
                 </div>
                 
-                <div className="w-full aspect-square max-w-xs mx-auto border-4 border-foreground rounded-lg overflow-hidden bg-accent/10">
+                <div className="w-full aspect-square max-w-xs mx-auto border-4 border-foreground rounded-lg overflow-hidden bg-accent/10 animate-wiggle">
                   <img 
                     src={robotAvatar} 
                     alt="Garvit's avatar - retro robot" 

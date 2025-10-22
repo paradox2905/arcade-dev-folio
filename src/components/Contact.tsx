@@ -54,7 +54,7 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="retro-card p-6 md:p-8 bg-card animate-slideInLeft">
+          <div className="retro-card p-6 md:p-8 bg-card animate-slideInLeft animate-floatSlow">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-['Outfit'] font-medium mb-2">
@@ -108,7 +108,7 @@ const Contact = () => {
 
           {/* Social Links */}
           <div className="space-y-4 animate-slideInRight">
-            <div className="retro-card p-6 bg-card">
+            <div className="retro-card p-6 bg-card animate-floatSlow">
               <h3 className="text-lg font-['Press_Start_2P'] mb-6 leading-relaxed">
                 FIND ME ON
               </h3>
@@ -121,9 +121,9 @@ const Contact = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 bg-accent/20 hover:bg-accent/40 border-2 border-foreground rounded-lg transition-all group"
+                      className="flex items-center gap-4 p-3 bg-accent/20 hover:bg-accent/40 border-2 border-foreground rounded-lg transition-all group animate-float"
                     >
-                      <div className="p-2 bg-primary border-2 border-foreground rounded">
+                      <div className="p-2 bg-primary border-2 border-foreground rounded animate-pulse-glow">
                         <Icon className="w-5 h-5 text-primary-foreground" />
                       </div>
                       <div>
@@ -141,7 +141,7 @@ const Contact = () => {
             </div>
 
             {/* Fun Stats */}
-            <div className="retro-card p-6 bg-card">
+            <div className="retro-card p-6 bg-card animate-float">
               <h3 className="text-lg font-['Press_Start_2P'] mb-4 leading-relaxed">
                 QUICK STATS
               </h3>

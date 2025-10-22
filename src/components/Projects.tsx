@@ -55,12 +55,12 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={project.title}
-              className="retro-card p-6 bg-card hover:scale-105 transition-all duration-300 animate-fadeIn group"
+              className="retro-card p-6 bg-card hover:scale-105 transition-all duration-300 animate-fadeIn animate-floatSlow group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Thumbnail Placeholder */}
               <div className="w-full h-40 bg-accent/20 border-2 border-foreground rounded-lg mb-4 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-                <span className="text-4xl">🎮</span>
+                <span className="text-4xl animate-wiggle">🎮</span>
               </div>
 
               <h3 className="text-lg font-['Press_Start_2P'] mb-3 leading-relaxed">

@@ -20,9 +20,9 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Mission Card */}
-          <div className="retro-card p-6 md:p-8 bg-card/95 backdrop-blur animate-slideInLeft">
+          <div className="retro-card p-6 md:p-8 bg-card/95 backdrop-blur animate-slideInLeft animate-floatSlow">
             <div className="flex items-center gap-3 mb-6">
-              <Target className="w-8 h-8 text-primary" />
+              <Target className="w-8 h-8 text-primary animate-pulse-glow" />
               <h3 className="text-xl md:text-2xl font-['Press_Start_2P']">MISSION</h3>
             </div>
             
@@ -49,13 +49,14 @@ const About = () => {
           </div>
 
           {/* Robot Card */}
-          <div className="retro-card p-6 md:p-8 bg-card/95 backdrop-blur animate-slideInRight">
+          <div className="retro-card p-6 md:p-8 bg-card/95 backdrop-blur animate-slideInRight animate-floatSlow">
             {/* Tech Badges */}
             <div className="flex flex-wrap gap-2 mb-6">
-              {techBadges.map((tech) => (
+              {techBadges.map((tech, index) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 bg-primary text-primary-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium"
+                  className="px-3 py-1 bg-primary text-primary-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium animate-float"
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {tech}
                 </span>
@@ -63,7 +64,7 @@ const About = () => {
             </div>
 
             {/* Robot Image */}
-            <div className="w-full aspect-square border-4 border-foreground rounded-lg overflow-hidden bg-accent/10">
+            <div className="w-full aspect-square border-4 border-foreground rounded-lg overflow-hidden bg-accent/10 animate-wiggle">
               <img 
                 src={robot3d} 
                 alt="3D retro robot illustration" 
