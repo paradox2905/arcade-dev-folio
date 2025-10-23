@@ -5,39 +5,44 @@ const Projects = () => {
   const projects = [
     {
       title: "Mast Mathri",
-      description: "E-commerce website for homemade Indian snacks with modern UI and smooth checkout experience.",
+      description:
+        "E-commerce website for homemade Indian snacks with modern UI and smooth checkout experience.",
       tech: ["React", "Tailwind", "Firebase"],
       demoLink: "#",
-      codeLink: "#"
+      codeLink: "#",
     },
     {
       title: "Travelly",
-      description: "Travel planning app with interactive maps, Firebase authentication, and real-time location services.",
+      description:
+        "Travel planning app with interactive maps, Firebase authentication, and real-time location services.",
       tech: ["React", "Google Maps API", "Firebase"],
       demoLink: "#",
-      codeLink: "#"
+      codeLink: "#",
     },
     {
       title: "Virtual Mouse",
-      description: "ML-powered gesture recognition system for hands-free computer control using computer vision.",
+      description:
+        "ML-powered gesture recognition system for hands-free computer control using computer vision.",
       tech: ["Python", "OpenCV", "MediaPipe"],
       demoLink: "#",
-      codeLink: "#"
+      codeLink: "#",
     },
     {
       title: "Crypto Analysis",
-      description: "Machine learning model analyzing cryptocurrency trends and price predictions with data visualization.",
+      description:
+        "Machine learning model analyzing cryptocurrency trends and price predictions with data visualization.",
       tech: ["Python", "TensorFlow", "Pandas"],
       demoLink: "#",
-      codeLink: "#"
+      codeLink: "#",
     },
     {
       title: "Resume Parser",
-      description: "NLP-based system for extracting structured data from resumes with high accuracy and smart categorization.",
+      description:
+        "NLP-based system for extracting structured data from resumes with high accuracy and smart categorization.",
       tech: ["Python", "NLP", "spaCy"],
       demoLink: "#",
-      codeLink: "#"
-    }
+      codeLink: "#",
+    },
   ];
 
   return (
@@ -50,17 +55,30 @@ const Projects = () => {
           </h2>
         </div>
 
+        {/* Inject floating keyframes */}
+        <style>{`
+          @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+          }
+          .floating {
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
+          }
+        `}</style>
+
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <div 
+            <div
               key={project.title}
-              className="retro-card p-6 bg-card hover:scale-105 transition-all duration-300 animate-fadeIn animate-floatSlow group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="retro-card p-6 bg-card hover:scale-105 transition-all duration-500 float-soft floating"
+              style={{ animationDelay: `${index * 0.3}s` }}
             >
               {/* Thumbnail Placeholder */}
               <div className="w-full h-40 bg-accent/20 border-2 border-foreground rounded-lg mb-4 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-                <span className="text-4xl animate-wiggle">🎮</span>
+                <span className="text-4xl">🎮</span>
               </div>
 
               <h3 className="text-lg font-['Press_Start_2P'] mb-3 leading-relaxed">
@@ -85,19 +103,19 @@ const Projects = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-2">
-                <Button 
+                <Button
                   size="sm"
                   className="flex-1 retro-button bg-primary text-primary-foreground hover:bg-primary text-xs"
-                  onClick={() => window.open(project.demoLink, '_blank')}
+                  onClick={() => window.open(project.demoLink, "_blank")}
                 >
                   <ExternalLink className="w-3 h-3 mr-1" />
                   Demo
                 </Button>
-                <Button 
+                <Button
                   size="sm"
                   variant="outline"
                   className="flex-1 retro-button bg-secondary text-secondary-foreground hover:bg-secondary border-secondary text-xs"
-                  onClick={() => window.open(project.codeLink, '_blank')}
+                  onClick={() => window.open(project.codeLink, "_blank")}
                 >
                   <Github className="w-3 h-3 mr-1" />
                   Code
@@ -112,3 +130,15 @@ const Projects = () => {
 };
 
 export default Projects;
+
+
+
+
+
+
+
+
+
+
+
+
