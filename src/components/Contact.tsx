@@ -40,24 +40,24 @@ const Contact = () => {
   ];
 
   return (
-    <section className="py-20 px-4 gradient-hero" id="contact">
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 gradient-hero" id="contact">
       <div className="container mx-auto max-w-4xl">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl text-shadow-retro mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-retro mb-4">
             LET'S CONNECT
           </h2>
-          <p className="text-lg text-foreground/80 font-['Outfit']">
+          <p className="text-sm sm:text-base lg:text-lg text-foreground/80 font-['Outfit'] px-4">
             Ready to level up your project? Send me a message!
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {/* Contact Form */}
-          <div className="retro-card p-6 md:p-8 bg-card animate-slideInLeft animate-floatSlow">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="retro-card p-4 sm:p-6 md:p-8 bg-card animate-slideInLeft animate-floatSlow">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-['Outfit'] font-medium mb-2">
+                <label className="block text-xs sm:text-sm font-['Outfit'] font-medium mb-1.5 sm:mb-2">
                   Player Name
                 </label>
                 <Input
@@ -65,13 +65,13 @@ const Contact = () => {
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="border-2 border-foreground focus:border-primary font-['Outfit']"
+                  className="border-2 border-foreground focus:border-primary font-['Outfit'] text-sm"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-['Outfit'] font-medium mb-2">
+                <label className="block text-xs sm:text-sm font-['Outfit'] font-medium mb-1.5 sm:mb-2">
                   Email Address
                 </label>
                 <Input
@@ -79,20 +79,20 @@ const Contact = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="border-2 border-foreground focus:border-primary font-['Outfit']"
+                  className="border-2 border-foreground focus:border-primary font-['Outfit'] text-sm"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-['Outfit'] font-medium mb-2">
+                <label className="block text-xs sm:text-sm font-['Outfit'] font-medium mb-1.5 sm:mb-2">
                   Message
                 </label>
                 <Textarea
                   placeholder="Tell me about your project..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="border-2 border-foreground focus:border-primary min-h-[120px] font-['Outfit']"
+                  className="border-2 border-foreground focus:border-primary min-h-[100px] sm:min-h-[120px] font-['Outfit'] text-sm"
                   required
                 />
               </div>
@@ -107,12 +107,12 @@ const Contact = () => {
           </div>
 
           {/* Social Links */}
-          <div className="space-y-4 animate-slideInRight">
-            <div className="retro-card p-6 bg-card animate-floatSlow">
-              <h3 className="text-lg font-['Press_Start_2P'] mb-6 leading-relaxed">
+          <div className="space-y-3 sm:space-y-4 animate-slideInRight">
+            <div className="retro-card p-4 sm:p-6 bg-card animate-floatSlow">
+              <h3 className="text-sm sm:text-base md:text-lg font-['Press_Start_2P'] mb-4 sm:mb-6 leading-relaxed">
                 FIND ME ON
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
@@ -121,16 +121,16 @@ const Contact = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 bg-accent/20 hover:bg-accent/40 border-2 border-foreground rounded-lg transition-all group animate-float"
+                      className="flex items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 bg-accent/20 hover:bg-accent/40 border-2 border-foreground rounded-lg transition-all group animate-float"
                     >
-                      <div className="p-2 bg-primary border-2 border-foreground rounded animate-pulse-glow">
-                        <Icon className="w-5 h-5 text-primary-foreground" />
+                      <div className="p-1.5 sm:p-2 bg-primary border-2 border-foreground rounded animate-pulse-glow flex-shrink-0">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
                       </div>
-                      <div>
-                        <p className="text-sm font-['Press_Start_2P'] group-hover:text-primary transition-colors">
+                      <div className="min-w-0">
+                        <p className="text-xs sm:text-sm font-['Press_Start_2P'] group-hover:text-primary transition-colors truncate">
                           {social.name}
                         </p>
-                        <p className="text-xs text-muted-foreground font-['Outfit'] mt-1">
+                        <p className="text-[10px] sm:text-xs text-muted-foreground font-['Outfit'] mt-0.5 sm:mt-1 truncate">
                           {social.label}
                         </p>
                       </div>
@@ -141,22 +141,22 @@ const Contact = () => {
             </div>
 
             {/* Fun Stats */}
-            <div className="retro-card p-6 bg-card animate-float">
-              <h3 className="text-lg font-['Press_Start_2P'] mb-4 leading-relaxed">
+            <div className="retro-card p-4 sm:p-6 bg-card animate-float">
+              <h3 className="text-sm sm:text-base md:text-lg font-['Press_Start_2P'] mb-3 sm:mb-4 leading-relaxed">
                 QUICK STATS
               </h3>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-['Outfit']">Response Time</span>
-                  <span className="text-sm font-['Outfit'] font-bold text-primary">{"<24 hours"}</span>
+                  <span className="text-xs sm:text-sm font-['Outfit']">Response Time</span>
+                  <span className="text-xs sm:text-sm font-['Outfit'] font-bold text-primary">{"<24 hours"}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-['Outfit']">Projects Completed</span>
-                  <span className="text-sm font-['Outfit'] font-bold text-primary">10+</span>
+                  <span className="text-xs sm:text-sm font-['Outfit']">Projects Completed</span>
+                  <span className="text-xs sm:text-sm font-['Outfit'] font-bold text-primary">10+</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-['Outfit']">Coffee Consumed</span>
-                  <span className="text-sm font-['Outfit'] font-bold text-primary">∞</span>
+                  <span className="text-xs sm:text-sm font-['Outfit']">Coffee Consumed</span>
+                  <span className="text-xs sm:text-sm font-['Outfit'] font-bold text-primary">∞</span>
                 </div>
               </div>
             </div>

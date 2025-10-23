@@ -6,27 +6,27 @@ const Hero = () => {
   const skills = ["React", "Node.js", "Tailwind", "Firebase", "APIs", "ML"];
 
   return (
-    <section className="min-h-screen gradient-hero px-4 py-12 md:py-20">
+    <section className="min-h-screen gradient-hero px-4 py-20 sm:py-24 md:py-20 lg:py-24">
       <div className="container mx-auto max-w-6xl">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full border-4 border-foreground mb-8 animate-slideInLeft text-xs md:text-sm">
-          <Sparkles className="w-4 h-4" />
-          <span className="font-['Press_Start_2P']">LEVEL 1 | PLAYER PROFILE</span>
+        <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-3 sm:px-4 py-2 rounded-full border-4 border-foreground mb-6 sm:mb-8 animate-slideInLeft text-xs md:text-sm">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="font-['Press_Start_2P'] text-[10px] sm:text-xs">LEVEL 1 | PLAYER PROFILE</span>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Left Content */}
-          <div className="space-y-6 animate-slideInLeft">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-shadow-retro">
+          <div className="space-y-4 sm:space-y-6 animate-slideInLeft">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-shadow-retro">
               Hi, I'm Garvit — Dev & Creator
             </h1>
 
-            <p className="text-lg md:text-xl text-foreground/80 font-['Outfit']">
+            <p className="text-base sm:text-lg md:text-xl text-foreground/80 font-['Outfit']">
               I build website — heavy on performance, clean UI, and delightful micro-interactions. I design interfaces that feel like menus and HUDs in every style .
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               <Button
                 size="lg"
                 className="retro-button bg-primary text-primary-foreground hover:bg-primary text-sm md:text-base"
@@ -50,10 +50,11 @@ const Hero = () => {
 
             {/* Skills */}
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
+              {skills.map((skill, index) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 bg-accent text-accent-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium"
+                  className="px-2 sm:px-3 py-1 bg-accent text-accent-foreground rounded-md border-2 border-foreground text-xs md:text-sm font-['Outfit'] font-medium animate-float"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {skill}
                 </span>
@@ -62,32 +63,17 @@ const Hero = () => {
           </div>
 
           {/* Right - Player Card */}
-<div className="animate-slideInRight  -mt-11">
-            {/* Inject slow vertical float only for the player card */}
-            <style>{`
-              @keyframes floatUpDown {
-                0% { transform: translateY(0); }
-                50% { transform: translateY(-12px); }
-                100% { transform: translateY(0); }
-              }
-              .animate-floatSlow {
-                animation: floatUpDown 6s ease-in-out infinite;
-                will-change: transform;
-              }
-            `}</style>
-
-            {/* Right card with increased height */}
-            <div className="retro-card p-6 bg-card animate-floatSlow h-[560px] md:h-[640px] flex items-center justify-center">
+          <div className="animate-slideInRight mt-6 md:mt-0">
+            {/* Right card with responsive height */}
+            <div className="retro-card p-4 sm:p-6 bg-card animate-floatSlow h-[400px] sm:h-[500px] md:h-[640px] flex items-center justify-center">
               <div className="text-center space-y-4 w-full">
-                <div className="border-4 border-orange-500 rounded-xl overflow-hidden h-[480px] md:h-[560px]">
+                <div className="border-4 border-orange-500 rounded-xl overflow-hidden h-[340px] sm:h-[440px] md:h-[560px] animate-wiggle">
                   <img
                     src={robotAvatar}
                     alt="Garvit's avatar - retro robot"
                     className="w-full h-full object-cover"
                   />
                 </div>
-
-                <div className="space-y-2"></div>
               </div>
             </div>
           </div>
