@@ -7,7 +7,7 @@ const Hero = () => {
   const skills = ["React", "Node.js", "Tailwind", "Firebase", "APIs", "ML"];
 
   return (
-    <section className="min-h-screen gradient-hero px-4 py-20 sm:py-24 md:py-20 lg:py-24">
+    <section className="min-h-screen gradient-hero px-4 py-12 sm:py-16 md:py-12 lg:py-16">
 
 
       <style>
@@ -85,9 +85,9 @@ const Hero = () => {
           </div>
 
           {/* Right - Player Card */}
-          <div className="animate-slideInRight mt-6 md:mt-0">
+          <div className="animate-slideInRight mt-0">
             {/* Right card with responsive height */}
-            <div className="retro-card p-4 sm:p-6 bg-card animate-floatSlow h-[400px] sm:h-[500px] md:h-[640px] flex items-center justify-center">
+            <div className="retro-card p-4 sm:p-6 bg-card animate-floatSlow h-[400px] sm:h-[500px] md:h-[640px] flex items-start justify-center pt-4 sm:pt-6">
               <div className="text-center space-y-4 w-full">
                 <div className="border-4 border-orange-500 rounded-xl overflow-hidden h-[340px] sm:h-[440px] md:h-[560px] animate-wiggle">
                   <img
