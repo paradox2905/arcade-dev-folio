@@ -7,7 +7,7 @@ const Hero = () => {
   const skills = ["React", "Node.js", "Tailwind", "Firebase", "APIs", "ML"];
 
   return (
-    <section className="min-h-screen gradient-hero px-4 py-12 sm:py-16 md:py-12 lg:py-16">
+    <section className="min-h-screen gradient-hero px-4 py-8 sm:py-12 md:py-8 lg:py-12">
 
 
       <style>
