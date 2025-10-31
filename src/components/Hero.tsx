@@ -2,11 +2,32 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import robotAvatar from "@/assets/robot.png";
 
+
 const Hero = () => {
   const skills = ["React", "Node.js", "Tailwind", "Firebase", "APIs", "ML"];
 
   return (
     <section className="min-h-screen gradient-hero px-4 py-20 sm:py-24 md:py-20 lg:py-24">
+
+
+      <style>
+        {`
+        @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+        
+        .play-regular {
+        font-family: "Play", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+        .play-bold {
+        font-family: "Play", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        }
+        `}
+        </style>
+
+
       <div className="container mx-auto max-w-6xl">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-3 sm:px-4 py-2 rounded-full border-4 border-foreground mb-6 sm:mb-8 animate-slideInLeft text-xs md:text-sm">
@@ -17,9 +38,10 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
           {/* Left Content */}
           <div className="space-y-4 sm:space-y-6 animate-slideInLeft">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-shadow-retro">
-              Hi, I'm Garvit — Dev & Creator
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight play-bold font-bold">
+              Hi, I'm <span className="text-orange-500">Garvit</span> — Dev & Creator
             </h1>
+
 
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 font-['Outfit']">
               I build website — heavy on performance, clean UI, and delightful micro-interactions. I design interfaces that feel like menus and HUDs in every style .

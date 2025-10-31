@@ -74,6 +74,11 @@ All colors MUST be HSL.
   }
 }
 
+body {
+  font-family: "Play", sans-serif;
+}
+
+
 @layer base {
   * {
     @apply border-border;
@@ -121,4 +126,7 @@ All colors MUST be HSL.
   .text-shadow-retro {
     text-shadow: 4px 4px 0 hsl(var(--foreground));
   }
+  
 }
+
+

@@ -55,27 +55,19 @@ const Projects = () => {
           </h2>
         </div>
 
-        {/* Inject floating keyframes */}
-        <style>{`
-          @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-          }
-          .floating {
-            animation: float 6s ease-in-out infinite;
-            will-change: transform;
-          }
-        `}</style>
+
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="retro-card p-4 sm:p-6 bg-card hover:scale-105 transition-all duration-500 animate-floatSlow"
-              style={{ animationDelay: `${index * 0.3}s` }}
+              className="retro-card p-4 sm:p-6 bg-card hover:scale-105 transition-all duration-500 floating"
+              style={{ animationDelay: `${index * 0.3}s`, animationDuration: `${7 + index}s` }}
+
             >
+
+
               {/* Thumbnail Placeholder */}
               <div className="w-full h-32 sm:h-40 bg-accent/20 border-2 border-foreground rounded-lg mb-3 sm:mb-4 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
                 <span className="text-3xl sm:text-4xl">🎮</span>

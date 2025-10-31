@@ -32,14 +32,28 @@ const Testimonials = () => {
           </h2>
         </div>
 
+        {/* Inject custom keyframes */}
+        <style>{`
+          @keyframes floatSlow {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+          }
+          .floating {
+            animation: floatSlow 25s ease-in-out infinite;
+            will-change: transform;
+          }
+        `}</style>
+
         {/* Testimonials Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {testimonials.map((testimonial, index) => (
             <div 
-              key={testimonial.name}
-              className="retro-card p-4 sm:p-6 bg-card/95 backdrop-blur animate-fadeIn animate-floatSlow hover:scale-105 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
+  key={testimonial.name}
+  className="retro-card p-4 sm:p-6 bg-card/95 backdrop-blur floating hover:scale-105 transition-all duration-300"
+  style={{ animationDelay: `${index * 0.2}s` }}
+>
+
               <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-3 sm:mb-4 animate-pulse-glow" />
               
               <p className="text-xs sm:text-sm md:text-base text-foreground/90 font-['Outfit'] mb-4 sm:mb-6 leading-relaxed">

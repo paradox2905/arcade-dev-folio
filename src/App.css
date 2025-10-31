@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* globals.css or any imported CSS file */
+@keyframes floatSlow {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.floating {
+  animation: floatSlow 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+
+.play-regular {
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+}
+
+.play-bold {
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+}

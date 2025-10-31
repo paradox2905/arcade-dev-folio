@@ -41,8 +41,8 @@ const Skills = () => {
   const [activeTab, setActiveTab] = useState("foundations");
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" id="skills" style={{ background: "var(--gradient-skills)" }}>
-      <div className="container mx-auto max-w-7xl">
+    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-visible md:overflow-hidden" id="skills" style={{ background: "var(--gradient-skills)" }}>
+       <div className="container mx-auto max-w-7xl">
         {/* Section Title */}
         <div className="text-center mb-8 sm:mb-12 animate-fadeIn">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-4" style={{ color: "hsl(var(--skills-gold))" }}>
@@ -53,8 +53,8 @@ const Skills = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 bg-transparent mb-6 sm:mb-8">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 bg-transparent mb-16 sm:mb-10">
             {Object.entries(skillCategories).map(([key, category]) => {
               const Icon = category.icon;
               return (
@@ -80,17 +80,17 @@ const Skills = () => {
           {Object.entries(skillCategories).map(([key, category]) => {
             const Icon = category.icon;
             return (
-              <TabsContent key={key} value={key} className="mt-0">
+              <TabsContent key={key} value={key} className="mt-0 sm:mt-20 md:mt-0">
                 <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                   {/* Main Skill Detail Card */}
                   <div 
-                    className="md:col-span-2 rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm animate-floatSlow border-2"
-                    style={{
-                      backgroundColor: "hsl(var(--skills-card))",
-                      borderColor: category.color,
-                      boxShadow: `var(--shadow-skill-card), var(--shadow-inner-glow)`
-                    }}
-                  >
+                    className="md:col-span-2 rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm animate-none md:animate-floatSlow border-2"
+                     style={{
+                       backgroundColor: "hsl(var(--skills-card))",
+                       borderColor: category.color,
+                       boxShadow: `var(--shadow-skill-card), var(--shadow-inner-glow)`
+                     }}
+                   >
                     <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                       <div 
                         className="p-2 sm:p-3 md:p-4 rounded-xl animate-wiggle" 
