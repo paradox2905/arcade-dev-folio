@@ -49,7 +49,7 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="text-sm font-['Outfit'] font-medium text-[#4a4a4a] hover:text-[hsl(var(--primary))] transition-colors duration-200"
+                className="text-xl font-['Outfit'] font-medium text-[#4a4a4a] hover:text-[hsl(var(--primary))] transition-colors duration-200"
               >
                 {item.name}
               </a>
@@ -59,7 +59,7 @@ const Navbar = () => {
           {/* Contact Button - Right */}
           <button
             onClick={() => scrollToSection('#contact')}
-            className="hidden lg:block px-6 py-2 bg-[hsl(var(--primary))] text-white rounded-full font-['Outfit'] font-medium text-sm hover:opacity-90 transition-opacity duration-200"
+            className="hidden lg:block px-6 py-2 bg-[hsl(var(--primary))] text-white rounded-full font-['Outfit'] font-medium text-xl hover:opacity-90 transition-opacity duration-200"
           >
             Contact me
           </button>
