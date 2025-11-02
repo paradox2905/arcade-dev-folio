@@ -84,7 +84,7 @@ const Skills = () => {
                 <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                   {/* Main Skill Detail Card */}
                   <div 
-                    className="md:col-span-2 rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm animate-none md:animate-floatSlow border-2"
+                    className="md:col-span-2 rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm animate-none md:animate-floatSlow border-2 -mx-2 sm:-mx-4 md:-mx-6"
                      style={{
                        backgroundColor: "hsl(var(--skills-card))",
                        borderColor: category.color,
@@ -165,7 +165,7 @@ const Skills = () => {
                   </div>
 
                   {/* Clickable Category Boxes */}
-                  <div className="space-y-4 sm:space-y-4">
+                  <div className="space-y-4 sm:space-y-4 -mx-2 sm:-mx-4 md:-mx-6">
                     {Object.entries(skillCategories).map(([catKey, cat], index) => {
                       const CategoryIcon = cat.icon;
                       const isActive = activeTab === catKey;
