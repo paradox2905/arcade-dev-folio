@@ -164,52 +164,72 @@ const Skills = () => {
                     </div>
                   </div>
 
-                  {/* Progress Tracker Sidebar */}
-                  <div 
-                    className="rounded-2xl p-4 sm:p-6 backdrop-blur-sm animate-float border-2"
-                    style={{
-                      backgroundColor: "hsl(var(--skills-card))",
-                      borderColor: "hsl(var(--skills-gold))",
-                      boxShadow: "var(--shadow-skill-card), var(--shadow-inner-glow)"
-                    }}
-                  >
-                    <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-center" style={{ color: "hsl(var(--skills-gold))" }}>
-                      XP TRACKER
-                    </h4>
-                    <div className="space-y-4 sm:space-y-6">
-                      {Object.entries(skillCategories).map(([catKey, cat], index) => (
+                  {/* Clickable Category Boxes */}
+                  <div className="space-y-4 sm:space-y-4">
+                    {Object.entries(skillCategories).map(([catKey, cat], index) => {
+                      const CategoryIcon = cat.icon;
+                      const isActive = activeTab === catKey;
+                      return (
                         <div 
                           key={catKey}
-                          className="animate-fadeIn"
-                          style={{ animationDelay: `${index * 0.1}s` }}
+                          onClick={() => setActiveTab(catKey)}
+                          className="rounded-xl p-4 sm:p-5 backdrop-blur-sm animate-fadeIn border-2 cursor-pointer transition-all duration-300 hover:scale-105"
+                          style={{
+                            backgroundColor: isActive ? cat.color : "hsl(var(--skills-card))",
+                            borderColor: cat.color,
+                            boxShadow: isActive ? `var(--shadow-skill-card), 0 0 20px ${cat.color}60` : "var(--shadow-skill-card)",
+                            animationDelay: `${index * 0.1}s`
+                          }}
                         >
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-xs font-['Outfit'] font-semibold text-white/90">
-                              {cat.name}
-                            </span>
-                            <span className="text-xs font-['Outfit'] text-white/50">
-                              {cat.count} skills
-                            </span>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div 
+                              className="p-2 rounded-lg"
+                              style={{ 
+                                backgroundColor: isActive ? "hsl(var(--skills-bg))" : cat.color,
+                                boxShadow: `0 0 10px ${cat.color}40`
+                              }}
+                            >
+                              <CategoryIcon 
+                                className="w-5 h-5" 
+                                style={{ color: isActive ? cat.color : "hsl(var(--skills-bg))" }} 
+                              />
+                            </div>
+                            <div className="flex-1">
+                              <h4 
+                                className="text-sm sm:text-base font-bold font-['Outfit']"
+                                style={{ color: isActive ? "hsl(var(--skills-bg))" : "white" }}
+                              >
+                                {cat.name}
+                              </h4>
+                              <p 
+                                className="text-xs font-['Outfit']"
+                                style={{ color: isActive ? "hsl(var(--skills-bg)/0.7)" : "white/60" }}
+                              >
+                                {cat.count} skills
+                              </p>
+                            </div>
                           </div>
+                          
+                          {/* Progress Bar */}
                           <div 
-                            className="w-full h-3 rounded-full overflow-hidden border"
+                            className="w-full h-2 rounded-full overflow-hidden border"
                             style={{ 
-                              backgroundColor: "hsl(var(--skills-bg))",
-                              borderColor: cat.color
+                              backgroundColor: isActive ? "hsl(var(--skills-bg)/0.3)" : "hsl(var(--skills-bg))",
+                              borderColor: isActive ? "hsl(var(--skills-bg))" : cat.color
                             }}
                           >
                             <div 
                               className="h-full transition-all duration-1000 ease-out rounded-full"
                               style={{ 
-                                backgroundColor: cat.color,
-                                width: activeTab === catKey ? `${(cat.count / 6) * 100}%` : '0%',
-                                boxShadow: `0 0 10px ${cat.color}`
+                                backgroundColor: isActive ? "hsl(var(--skills-bg))" : cat.color,
+                                width: `${(cat.count / 6) * 100}%`,
+                                boxShadow: `0 0 8px ${isActive ? "hsl(var(--skills-bg))" : cat.color}`
                               }}
                             />
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
                 </div>
               </TabsContent>
