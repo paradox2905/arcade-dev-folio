@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, ChevronLeft, ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
@@ -180,19 +180,6 @@ const Projects = () => {
                     <div className="bg-gray-900 rounded-lg border-2 border-gray-700 aspect-video flex items-center justify-center text-6xl sm:text-7xl animate-float">
                       {currentProj.image}
                     </div>
-                    {/* Screen Frame Effect */}
-                    <div className="mt-2 flex gap-1 justify-center">
-                      {projects.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => goToProject(idx)}
-                          className={`w-2 h-2 rounded-full border border-black transition-all ${
-                            idx === currentProject ? "bg-orange-500" : "bg-gray-400"
-                          }`}
-                          aria-label={`Go to project ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
 
@@ -243,24 +230,40 @@ const Projects = () => {
                   </Button>
                 </div>
               </div>
+
+              {/* Project Indicator Dots - Bottom Right */}
+              <div className="absolute bottom-4 right-4 flex gap-1.5">
+                {projects.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => goToProject(idx)}
+                    className={`w-2.5 h-2.5 rounded-full border-2 border-black transition-all hover:scale-125 ${
+                      idx === currentProject ? "bg-orange-500" : "bg-gray-400"
+                    }`}
+                    aria-label={`Go to project ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Navigation Buttons Below */}
+          {/* Navigation Buttons Below - Blue Pixel Style */}
           <div className="flex justify-center gap-4 mt-6">
             <button
               onClick={prevProject}
-              className="px-6 py-2 bg-gray-300 hover:bg-gray-400 border-4 border-black rounded-lg font-mono font-bold shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
+              disabled={isTransitioning}
+              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 border-4 border-black rounded-lg font-mono font-bold text-white shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2 disabled:cursor-not-allowed"
             >
-              <ChevronLeft className="w-4 h-4" />
-              Prev
+              <span className="text-lg">◄</span>
+              <span className="text-sm">Prev</span>
             </button>
             <button
               onClick={nextProject}
-              className="px-6 py-2 bg-gray-300 hover:bg-gray-400 border-4 border-black rounded-lg font-mono font-bold shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
+              disabled={isTransitioning}
+              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 border-4 border-black rounded-lg font-mono font-bold text-white shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2 disabled:cursor-not-allowed"
             >
-              Next
-              <ChevronRight className="w-4 h-4" />
+              <span className="text-sm">Next</span>
+              <span className="text-lg">►</span>
             </button>
           </div>
         </div>
