@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
 
   const projects = [
     {
@@ -79,11 +81,33 @@ const Projects = () => {
   ];
 
   const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection("next");
+    setTimeout(() => {
+      setCurrentProject((prev) => (prev + 1) % projects.length);
+      setIsTransitioning(false);
+    }, 400);
   };
 
   const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection("prev");
+    setTimeout(() => {
+      setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+      setIsTransitioning(false);
+    }, 400);
+  };
+
+  const goToProject = (index: number) => {
+    if (isTransitioning || index === currentProject) return;
+    setIsTransitioning(true);
+    setDirection(index > currentProject ? "next" : "prev");
+    setTimeout(() => {
+      setCurrentProject(index);
+      setIsTransitioning(false);
+    }, 400);
   };
 
   const currentProj = projects[currentProject];
@@ -138,7 +162,18 @@ const Projects = () => {
               </button>
 
               {/* Project Content Grid */}
-              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+              <div 
+                className={`grid md:grid-cols-2 gap-6 md:gap-8 transition-all duration-[800ms] ease-in-out ${
+                  isTransitioning 
+                    ? direction === "next" 
+                      ? "opacity-0 translate-x-[-100px] translate-y-[50px]" 
+                      : "opacity-0 translate-x-[-100px] translate-y-[50px]"
+                    : "opacity-100 translate-x-0 translate-y-0"
+                }`}
+                style={{
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                }}
+              >
                 {/* Left: Project Preview */}
                 <div className="flex items-center justify-center">
                   <div className="w-full bg-gray-800 rounded-xl border-4 border-black p-4 shadow-[4px_4px_0px_rgba(0,0,0,0.2)]">
@@ -150,7 +185,7 @@ const Projects = () => {
                       {projects.map((_, idx) => (
                         <button
                           key={idx}
-                          onClick={() => setCurrentProject(idx)}
+                          onClick={() => goToProject(idx)}
                           className={`w-2 h-2 rounded-full border border-black transition-all ${
                             idx === currentProject ? "bg-orange-500" : "bg-gray-400"
                           }`}
