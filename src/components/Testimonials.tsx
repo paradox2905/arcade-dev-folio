@@ -19,7 +19,7 @@ const Testimonials = () => {
     { id: 3, x: 20, y: 300 }
   ]);
 
-  const testimonials = [
+  const [testimonials, setTestimonials] = useState([
     {
       name: "Jane Doe",
       role: "CEO, Creative Minds LLC",
@@ -47,7 +47,7 @@ const Testimonials = () => {
       stage: "3-2",
       score: 9000
     }
-  ];
+  ]);
 
   const currentTestimonial = testimonials[currentIndex];
 
@@ -118,6 +118,19 @@ const Testimonials = () => {
   const handleSubmitReview = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    
+    const newReview = {
+      name: formData.get('name') as string,
+      role: formData.get('role') as string,
+      avatar: "⭐",
+      text: formData.get('review') as string,
+      rating: 5,
+      stage: `${testimonials.length + 1}-1`,
+      score: 5000 + (testimonials.length * 1000)
+    };
+    
+    setTestimonials(prev => [...prev, newReview]);
+    setCurrentIndex(testimonials.length);
     
     toast({
       title: "Review Submitted!",
