@@ -100,6 +100,20 @@ const Testimonials = () => {
     setDraggedCoin(null);
   };
 
+  const handleInsertClick = () => {
+    if (floatingCoins.length === 0) {
+      toast({
+        title: "No Coins Available!",
+        description: "Drag coins to the INSERT button to fill the jar.",
+      });
+    } else {
+      toast({
+        title: "Drag Coins Here!",
+        description: "Drag the floating coins to this button to fill the jar and unlock the review form.",
+      });
+    }
+  };
+
   const handleSubmitReview = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -121,19 +135,20 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 gradient-dark relative" id="testimonials">
-      {/* Floating Draggable Coins */}
+    <>
+      {/* Floating Draggable Coins - Outside section for proper fixed positioning */}
       {floatingCoins.map(coin => (
         <div
           key={coin.id}
           draggable
           onDragStart={() => handleDragStart(coin.id)}
           onDragEnd={handleDragEnd}
-          className="fixed cursor-grab active:cursor-grabbing z-50 animate-bounce"
+          className="fixed cursor-grab active:cursor-grabbing animate-bounce"
           style={{ 
             left: `${coin.x}px`, 
             top: `${coin.y}px`,
-            animation: `bounce 2s infinite ${coin.id * 0.3}s`
+            animation: `bounce 2s infinite ${coin.id * 0.3}s`,
+            zIndex: 9999
           }}
         >
           <div className="w-12 h-12 bg-yellow-400 border-4 border-yellow-600 rounded-full flex items-center justify-center text-2xl shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:scale-110 transition-transform">
@@ -141,6 +156,8 @@ const Testimonials = () => {
           </div>
         </div>
       ))}
+
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 gradient-dark relative" id="testimonials">
 
       <div className="container mx-auto max-w-4xl relative">
         {/* Arcade Cabinet Frame */}
@@ -233,7 +250,8 @@ const Testimonials = () => {
                 </div>
                 <button
                   id="insert-button"
-                  className={`px-4 py-2 sm:px-6 sm:py-3 bg-yellow-400 hover:bg-yellow-500 border-4 border-black rounded-lg font-['Press_Start_2P'] text-[10px] sm:text-xs shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all ${isDragging ? 'ring-4 ring-green-400 animate-pulse' : ''}`}
+                  onClick={handleInsertClick}
+                  className={`px-4 py-2 sm:px-6 sm:py-3 bg-yellow-400 hover:bg-yellow-500 border-4 border-black rounded-lg font-['Press_Start_2P'] text-[10px] sm:text-xs shadow-[4px_4px_0px_rgba(0,0,0,0.3)] hover:shadow-[2px_2px_0px_rgba(0,0,0,0.3)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all cursor-pointer ${isDragging ? 'ring-4 ring-green-400 animate-pulse' : ''}`}
                 >
                   INSERT
                 </button>
@@ -304,17 +322,18 @@ const Testimonials = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Marquee Animation */}
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee span {
-          animation: marquee 20s linear infinite;
-        }
-      `}</style>
-    </section>
+        {/* Marquee Animation */}
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee span {
+            animation: marquee 20s linear infinite;
+          }
+        `}</style>
+      </section>
+    </>
   );
 };
 
