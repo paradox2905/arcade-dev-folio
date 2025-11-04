@@ -76,15 +76,16 @@ const Testimonials = () => {
         e.clientY <= rect.bottom;
       
       if (isOverButton) {
-        // Fill jar animation
-        const newFill = Math.min(jarFill + 33, 100);
+        // Calculate fill based on remaining coins (3 coins total = 100%)
+        const fillPerCoin = Math.ceil(100 / 3);
+        const newFill = Math.min(jarFill + fillPerCoin, 100);
         setJarFill(newFill);
         
         // Remove the dragged coin
         setFloatingCoins(prev => prev.filter(coin => coin.id !== draggedCoin));
         
-        // If jar is full, open form
-        if (newFill >= 100) {
+        // If jar is full (99% or more to account for rounding), open form
+        if (newFill >= 99) {
           setTimeout(() => {
             setIsFormOpen(true);
             setJarFill(0);
